@@ -19,5 +19,15 @@ namespace PolygonalChain
         {
             return 0;
         }
+
+        public virtual bool sortMinToMax()
+        {
+            return false;
+        }
+
+        public virtual bool sortMaxToMin()
+        {
+            return false;
+        }
     }
 }
