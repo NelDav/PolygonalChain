@@ -34,8 +34,7 @@ namespace PolygonalChain
         {
             if (element.y != null)
             {
-                entrys.Remove(element);
-                return true;
+                return entrys.Remove(element);
             }
             return false;
         }

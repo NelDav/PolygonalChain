@@ -8,7 +8,7 @@ namespace PolygonalChain
 {
     public class PChainOfNumbers : PChain
     {
-        public List<PPoint> entrys = new List<PPoint>();
+        List<PPoint> entrys = new List<PPoint>();
 
         public override PValuetype valueType()
         {
@@ -18,6 +18,55 @@ namespace PolygonalChain
         public override int length()
         {
             return entrys.Count;
+        }
+
+        public bool addPoint(PPoint point)
+        {
+            bool foundpoint = false;
+            foreach(PPoint p in entrys)
+            {
+                if (p.x == point.x)
+                {
+                    foundpoint = true;
+                    break;
+                }
+            }
+
+            if (!foundpoint)
+            {
+                entrys.Add(point);
+                return true;
+            }
+            return false;
+        }
+
+        public bool removePoint(PPoint point)
+        {
+            return entrys.Remove(point);
+        }
+
+        public bool removePointAt(int index)
+        {
+            if (index > -1 && index < entrys.Count)
+            {
+                entrys.RemoveAt(index);
+                return true;
+            }
+            return false;
+        }
+
+        public List<PPoint> getPoints()
+        {
+            return entrys;
+        }
+
+        public PPoint getPoint(int index)
+        {
+            if (index > -1 && index < entrys.Count)
+            {
+                return entrys[index];
+            }
+            else return null;
         }
 
         public override bool sortMinToMax()
