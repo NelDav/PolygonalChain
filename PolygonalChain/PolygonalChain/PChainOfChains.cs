@@ -147,9 +147,12 @@ namespace PolygonalChain
                 if (index >= entrys.Count)
                     break;
             } while (Math.Abs(xCoordinate - entrys[index].x) < Math.Abs(differenceXCoordinate_element1));
+            index--;
 
             //Find the point on the other side of the searched point and save at Point2
-            if (xCoordinate >= element1.x) //differenceXPos_Point1 is positive or 0
+            if (xCoordinate == element1.x)
+                return element1;
+            else if (xCoordinate > element1.x) //differenceXPos_Point1 is positive or 0
             {
                 if (index + 1 < entrys.Count)
                     element2 = entrys[index + 1];
@@ -212,7 +215,7 @@ namespace PolygonalChain
 
                 foreach (double position in xCoordinates)
                 {
-                    resultChainOfNumbers.addPoint(new PPoint(position, ((chainFromElement1.getValue(position).y - chainFromElement2.getValue(position).y) / xDiffe1_e2) * xDiffe1_xres));
+                    resultChainOfNumbers.addPoint(new PPoint(position, chainFromElement1.getValue(position) + ((chainFromElement1.getValue(position) - chainFromElement2.getValue(position)) / xDiffe1_e2) * xDiffe1_xres));
                 }
 
                 resultElement = new PElement(xRes, resultChainOfNumbers);

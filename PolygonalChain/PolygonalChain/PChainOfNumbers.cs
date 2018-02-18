@@ -124,7 +124,7 @@ namespace PolygonalChain
             return true;
         }
 
-        public PPoint getValue(double xPos)
+        public double getValue(double xPos)
         {
             double differenceXPos_Point1;
             PPoint Point1 = new PPoint();
@@ -143,16 +143,19 @@ namespace PolygonalChain
                 if (index >= entrys.Count)
                     break;
             } while (Math.Abs(xPos - entrys[index].x) < Math.Abs(differenceXPos_Point1));
+            index--;
 
             //Find the point on the other side of the searched point and save at Point2
-            if (xPos >= Point1.x) //differenceXPos_Point1 is positive or 0
+            if (xPos == Point1.x)
+                return Point1.y;
+            else if (xPos > Point1.x) //differenceXPos_Point1 is positive or 0
             {
                 if (index + 1 < entrys.Count)
                     Point2 = entrys[index + 1];
                 else if (index - 1 >= 0)    //If there is no point on the other side of the searched point take the next point on the other side of point1
                     Point2 = entrys[index - 1];
                 else    //If there is only one point in entrys return this point.
-                    return Point1;
+                    return Point1.y;
             }
             else
             {
@@ -161,12 +164,12 @@ namespace PolygonalChain
                 else if (index + 1 < entrys.Count)  //If there is no point on the other side of the searched point take the next point on the other side of point1
                     Point2 = entrys[index + 1];
                 else    //If there is only one point in entrys return this point.
-                    return Point1;
+                    return Point1.y;
             }
 
             PPoint differencePoint1_Point2 = new PPoint(Point1.x - Point2.x, Point1.y - Point2.y);
 
-            return new PPoint(xPos, (differencePoint1_Point2.y / differencePoint1_Point2.x) * differenceXPos_Point1);
+            return Point1.y + (differencePoint1_Point2.y / differencePoint1_Point2.x) * differenceXPos_Point1;
         }
     }
 
