@@ -29,5 +29,10 @@ namespace PolygonalChain
         {
             return false;
         }
+
+        public virtual List<double> getXCoordinates()
+        {
+            return null;
+        }
     }
 }

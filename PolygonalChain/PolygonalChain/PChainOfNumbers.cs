@@ -69,6 +69,15 @@ namespace PolygonalChain
             else return null;
         }
 
+        public override List<double> getXCoordinates()
+        {
+            List<double> result = new List<double>();
+            foreach (PPoint entry in entrys)
+                result.Add(entry.x);
+
+            return result;
+        }
+
         public override bool sortMinToMax()
         {
             bool gothrought = false;
