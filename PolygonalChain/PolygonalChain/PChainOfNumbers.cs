@@ -124,7 +124,7 @@ namespace PolygonalChain
             return true;
         }
 
-        public PPoint getValue(double xPos)
+        public PPoint getPolygonalValue(double xPos)
         {
             double differenceXPos_Point1;
             PPoint Point1 = new PPoint();

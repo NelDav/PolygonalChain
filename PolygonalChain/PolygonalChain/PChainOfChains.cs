@@ -212,7 +212,7 @@ namespace PolygonalChain
 
                 foreach (double position in xCoordinates)
                 {
-                    resultChainOfNumbers.addPoint(new PPoint(position, ((chainFromElement1.getValue(position).y - chainFromElement2.getValue(position).y) / xDiffe1_e2) * xDiffe1_xres));
+                    resultChainOfNumbers.addPoint(new PPoint(position, ((chainFromElement1.getPolygonalValue(position).y - chainFromElement2.getPolygonalValue(position).y) / xDiffe1_e2) * xDiffe1_xres));
                 }
 
                 resultElement = new PElement(xRes, resultChainOfNumbers);
